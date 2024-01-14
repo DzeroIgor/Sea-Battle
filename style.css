@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=DotGothic16&display=swap");
 body {
   margin: 0;
   color: #fff;
@@ -89,43 +90,43 @@ body {
 }
 .l-content .sea .wave:nth-child(1) {
   animation: wave 5s infinite;
-  animation-delay: 0.3587273938s;
+  animation-delay: 0.9847313607s;
 }
 .l-content .sea .wave:nth-child(2) {
   animation: wave 6s infinite;
-  animation-delay: 0.0678024445s;
+  animation-delay: 0.7494962421s;
 }
 .l-content .sea .wave:nth-child(3) {
   animation: wave 7s infinite;
-  animation-delay: 0.3838220926s;
+  animation-delay: 0.6803946046s;
 }
 .l-content .sea .wave:nth-child(4) {
   animation: wave 8s infinite;
-  animation-delay: 0.4287069535s;
+  animation-delay: 0.1260309683s;
 }
 .l-content .sea .wave:nth-child(5) {
   animation: wave 9s infinite;
-  animation-delay: 0.1691457349s;
+  animation-delay: 0.5082612117s;
 }
 .l-content .sea .wave:nth-child(6) {
   animation: wave 10s infinite;
-  animation-delay: 0.6320665151s;
+  animation-delay: 0.5002862595s;
 }
 .l-content .sea .wave:nth-child(7) {
   animation: wave 11s infinite;
-  animation-delay: 0.6391309731s;
+  animation-delay: 0.8932563945s;
 }
 .l-content .sea .wave:nth-child(8) {
   animation: wave 12s infinite;
-  animation-delay: 0.5611543085s;
+  animation-delay: 0.7201270173s;
 }
 .l-content .sea .wave:nth-child(9) {
   animation: wave 13s infinite;
-  animation-delay: 0.1358904971s;
+  animation-delay: 0.0733731352s;
 }
 .l-content .sea .wave:nth-child(10) {
   animation: wave 14s infinite;
-  animation-delay: 0.8121142826s;
+  animation-delay: 0.1035593445s;
 }
 .l-content .sea .wave::before {
   content: "";
@@ -187,6 +188,8 @@ body {
   text-align: center;
   padding: 4rem;
   box-sizing: border-box;
+  font-family: "DotGothic16", sans-serif;
+  font-size: 2em;
 }
 
 @keyframes fire-sm {

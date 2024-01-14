@@ -1,5 +1,6 @@
-$waveColor: #00738d;
+@import url('https://fonts.googleapis.com/css2?family=DotGothic16&display=swap');
 
+$waveColor: #00738d;
 $scopeColor: #4F48;
 
 
@@ -130,6 +131,8 @@ body {
     text-align: center;
     padding: 4rem;
     box-sizing: border-box;
+    font-family: 'DotGothic16', sans-serif;
+    font-size: 2em;
 }
 
 @keyframes fire-sm {

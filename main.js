@@ -184,6 +184,8 @@ const shoot = (e) => {
                 clearInterval(timerRochet)
                 rocket.shoot = false
                 layers[rocket.layer].rochet = false
+                score -= 10
+                scoreRender() 
             } else {
                 layers[rocket.layer].rochet = false
                 rocket.layer ++
@@ -193,7 +195,12 @@ const shoot = (e) => {
                     console.log( rocket.x, ship.x)
                     alert('boom!')  
                     resetShip()  
-                    explosion.x = rocket.x 
+
+                    clearInterval(timerRochet)
+                    rocket.shoot = false
+                    layers[rocket.layer].rochet = false
+
+                    // explosion.x = rocket.x 
                     // layers[ridx].explosion = true             //?????????????
                     score += 10
                     scoreRender()

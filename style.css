@@ -1,0 +1,265 @@
+body {
+  margin: 0;
+  color: #fff;
+}
+
+.l-header {
+  background-color: #222;
+  height: 20vh;
+  text-align: center;
+}
+
+.l-content {
+  overflow: hidden;
+  background-color: #333;
+  height: 60vh;
+}
+.l-content .sea {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  perspective: 800px;
+  perspective-origin: center top;
+  background-image: linear-gradient(#00738d, #023946 35%);
+  cursor: none;
+}
+.l-content .sea .layer {
+  position: absolute;
+  inset: 0;
+  left: -60%;
+  right: -60%;
+}
+.l-content .sea .layer:nth-child(1) {
+  z-index: 10;
+  transform: translateZ(0px);
+  filter: brightness(100%) blur(0px);
+}
+.l-content .sea .layer:nth-child(2) {
+  z-index: 9;
+  transform: translateZ(-95px);
+  filter: brightness(95%) blur(0.5px);
+}
+.l-content .sea .layer:nth-child(3) {
+  z-index: 8;
+  transform: translateZ(-190px);
+  filter: brightness(90%) blur(1px);
+}
+.l-content .sea .layer:nth-child(4) {
+  z-index: 7;
+  transform: translateZ(-285px);
+  filter: brightness(85%) blur(1.5px);
+}
+.l-content .sea .layer:nth-child(5) {
+  z-index: 6;
+  transform: translateZ(-380px);
+  filter: brightness(80%) blur(2px);
+}
+.l-content .sea .layer:nth-child(6) {
+  z-index: 5;
+  transform: translateZ(-475px);
+  filter: brightness(75%) blur(2.5px);
+}
+.l-content .sea .layer:nth-child(7) {
+  z-index: 4;
+  transform: translateZ(-570px);
+  filter: brightness(70%) blur(3px);
+}
+.l-content .sea .layer:nth-child(8) {
+  z-index: 3;
+  transform: translateZ(-665px);
+  filter: brightness(65%) blur(3.5px);
+}
+.l-content .sea .layer:nth-child(9) {
+  z-index: 2;
+  transform: translateZ(-760px);
+  filter: brightness(60%) blur(4px);
+}
+.l-content .sea .layer:nth-child(10) {
+  z-index: 1;
+  transform: translateZ(-855px);
+  filter: brightness(55%) blur(4.5px);
+}
+.l-content .sea .wave {
+  height: 120px;
+  width: 100%;
+  background-image: linear-gradient(transparent 50%, #00738d 50%, #00738d 50%);
+  position: absolute;
+  bottom: 0%;
+  z-index: 12;
+}
+.l-content .sea .wave:nth-child(1) {
+  animation: wave 5s infinite;
+  animation-delay: 0.3587273938s;
+}
+.l-content .sea .wave:nth-child(2) {
+  animation: wave 6s infinite;
+  animation-delay: 0.0678024445s;
+}
+.l-content .sea .wave:nth-child(3) {
+  animation: wave 7s infinite;
+  animation-delay: 0.3838220926s;
+}
+.l-content .sea .wave:nth-child(4) {
+  animation: wave 8s infinite;
+  animation-delay: 0.4287069535s;
+}
+.l-content .sea .wave:nth-child(5) {
+  animation: wave 9s infinite;
+  animation-delay: 0.1691457349s;
+}
+.l-content .sea .wave:nth-child(6) {
+  animation: wave 10s infinite;
+  animation-delay: 0.6320665151s;
+}
+.l-content .sea .wave:nth-child(7) {
+  animation: wave 11s infinite;
+  animation-delay: 0.6391309731s;
+}
+.l-content .sea .wave:nth-child(8) {
+  animation: wave 12s infinite;
+  animation-delay: 0.5611543085s;
+}
+.l-content .sea .wave:nth-child(9) {
+  animation: wave 13s infinite;
+  animation-delay: 0.1358904971s;
+}
+.l-content .sea .wave:nth-child(10) {
+  animation: wave 14s infinite;
+  animation-delay: 0.8121142826s;
+}
+.l-content .sea .wave::before {
+  content: "";
+  display: block;
+  transform: translateY(0px);
+  height: 25px;
+  background-image: radial-gradient(#00738d 29%, transparent 30%);
+  background-position: 80px 78px;
+  background-size: 160px 100px;
+}
+.l-content .sea .wave::after {
+  content: "";
+  display: block;
+  transform: translateY(0px);
+  height: 51px;
+  background-image: radial-gradient(transparent 40%, #00738d 42%);
+  background-position: 0 -52px;
+  background-size: 160px 100px;
+}
+.l-content .scope {
+  width: 200px;
+  height: 200px;
+  border: 2px solid rgba(68, 255, 68, 0.5333333333);
+  border-radius: 100%;
+  color: rgba(68, 255, 68, 0.5333333333);
+  font-size: 40px;
+  position: absolute;
+  overflow: hidden;
+  z-index: 50;
+  align-self: unset;
+  bottom: 0;
+}
+.l-content .scope .mid {
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  text-align: center;
+  line-height: 200px;
+}
+.l-content .scope .h {
+  width: 400px;
+  height: 200px;
+  position: absolute;
+  line-height: 190px;
+  letter-spacing: 173px;
+}
+.l-content .scope .v {
+  width: 200px;
+  height: 400px;
+  position: absolute;
+  line-height: 210px;
+  letter-spacing: 173px;
+  writing-mode: vertical-lr;
+}
+
+.l-footer {
+  background-color: #444;
+  height: 20vh;
+  text-align: center;
+  padding: 4rem;
+  box-sizing: border-box;
+}
+
+@keyframes fire-sm {
+  from {
+    background-image: radial-gradient(rgba(255, 255, 116, 0.2431372549), transparent 70%);
+    opacity: 0;
+    background-size: 0 0;
+    background-position-y: 100px;
+  }
+  50% {
+    background-image: radial-gradient(#ffff4c, transparent 70%);
+    opacity: 1;
+    background-size: 100px 100px;
+    background-position-y: 0px;
+  }
+  to {
+    background-image: radial-gradient(rgba(255, 255, 116, 0.2431372549), transparent 70%);
+    opacity: 0;
+    background-size: 0 0;
+    background-position-y: 100px;
+  }
+}
+@keyframes fire-md {
+  from {
+    background-image: radial-gradient(rgba(255, 185, 45, 0.4941176471), transparent 70%);
+    opacity: 0;
+    background-size: 0 0;
+    background-position-y: 200px;
+  }
+  50% {
+    background-image: radial-gradient(#ffb92d, transparent 70%);
+    opacity: 1;
+    background-size: 200px 200px;
+    background-position-y: 0px;
+  }
+  to {
+    background-image: radial-gradient(rgba(255, 185, 45, 0.4941176471), transparent 70%);
+    opacity: 0;
+    background-size: 0 0;
+    background-position-y: 200px;
+  }
+}
+@keyframes fire-lg {
+  from {
+    background-image: radial-gradient(rgba(255, 185, 45, 0.4941176471), transparent 70%);
+    opacity: 0;
+    background-size: 0 0;
+    background-position-y: 300px;
+  }
+  50% {
+    background-image: radial-gradient(#ff5100, transparent 70%);
+    opacity: 1;
+    background-size: 250px 300px;
+    background-position-y: 0px;
+  }
+  to {
+    background-image: radial-gradient(rgba(255, 185, 45, 0.4941176471), transparent 70%);
+    opacity: 0;
+    background-size: 0 0;
+    background-position-y: 300px;
+  }
+}
+@keyframes wave {
+  0% {
+    left: 0%;
+  }
+  33% {
+    left: -5%;
+  }
+  66% {
+    left: 0%;
+  }
+  100% {
+    left: -5%;
+  }
+}/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,39 @@
+.explosion {
+  width: 300px;
+  height: 300px;
+  position: absolute;
+  bottom: 40%;
+  z-index: 15;
+  display: grid;
+  grid: 1fr 1fr 1fr/1fr 1fr 1fr;
+}
+.explosion .fire-bottom-sm {
+  grid-column-start: 2;
+  grid-row-start: 3;
+  background-repeat: no-repeat;
+  background-position: center;
+  animation: fire-sm 4s linear;
+  animation-fill-mode: forwards;
+}
+.explosion .fire-bottom-md {
+  grid-column-start: 1;
+  grid-column-end: 4;
+  grid-row-start: 2;
+  grid-row-end: 4;
+  background-position: 0 75px;
+  background-position: center;
+  background-repeat: no-repeat;
+  animation: fire-md 4s linear;
+  animation-fill-mode: forwards;
+}
+.explosion .fire-bottom-lg {
+  grid-column-start: 1;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 4;
+  background-position: 0 75px;
+  background-position: center;
+  background-repeat: no-repeat;
+  animation: fire-lg 4s linear;
+  animation-fill-mode: forwards;
+}/*# sourceMappingURL=explosion.css.map */

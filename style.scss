@@ -1,0 +1,208 @@
+$waveColor: #00738d;
+
+$scopeColor: #4F48;
+
+
+
+
+body {
+    margin: 0;
+    color: #fff;
+}
+
+.l-header {
+    background-color: #222;
+    height: 20vh;
+    text-align: center;
+}
+
+.l-content {
+    overflow: hidden;
+    background-color: #333;
+    height: 60vh;
+
+    .sea {
+        position: relative;
+        height: 100%;
+        width: 100%;
+        perspective: 800px;
+        perspective-origin: center top;
+        background-image: linear-gradient( $waveColor, #023946 35%);
+        cursor: none;
+        
+        .layer {
+            @for $i from 0 to 10 {
+                &:nth-child(#{$i+1}) {
+                    z-index: 10 - $i;
+                    transform: translateZ(-95px * $i);
+                    filter: brightness(100% -$i *5)
+                            blur($i * .5px);
+                }
+            }
+            position: absolute;
+            inset: 0;
+            left: -60%;
+            right: -60%;
+        }
+        
+        .wave {
+            // border: 1px solid red;
+            height: 120px;
+            width: 100%;
+            background-image: linear-gradient(transparent 50%, $waveColor 50%, $waveColor 50%);
+            position: absolute;
+            bottom: 0%;
+            z-index: 12;
+
+            @for $i from 0 to 10 {
+                    &:nth-child(#{$i+1}) {                    
+                        animation: wave 5s + $i * 1s infinite;
+                        animation-delay: random() * 1s;
+                    }
+            } 
+
+            &::before {
+                content: "";
+                display: block;
+                // border: 1px solid yellow;
+                transform: translateY(-0px);
+                height: 25px;
+                background-image: radial-gradient($waveColor 29%, transparent 30%);
+                background-position: 80px 78px;
+                background-size: 160px 100px;
+            }
+
+            &::after {
+                content: "";
+                display: block;
+                // border: 1px solid green;
+                transform: translateY(0px);
+                height: 51px;
+                background-image: radial-gradient(transparent 40%, $waveColor 42%);
+                background-position: 0 -52px;
+                background-size: 160px 100px;
+            }
+        }
+           
+    }
+    .scope {
+        width: 200px;
+        height: 200px;
+        border: 2px solid $scopeColor;
+        border-radius: 100%;
+        color: $scopeColor;
+        font-size: 40px;
+        position: absolute;
+        overflow: hidden;
+        z-index: 50;
+        align-self: unset;
+        bottom: 0;
+
+        .mid {
+            width: 200px;
+            height: 200px;
+            position: absolute;
+
+            text-align: center;
+            line-height: 200px;
+        }
+        .h {
+            width: 400px;
+            height: 200px;
+            position: absolute;
+            line-height: 190px;
+            letter-spacing: 173px;
+        }
+        .v {
+            width: 200px;
+            height: 400px;
+            position: absolute;
+            line-height: 210px;
+            letter-spacing: 173px;
+            writing-mode: vertical-lr;
+        }
+    }
+}
+
+.l-footer {
+    background-color: #444;
+    height: 20vh;
+    text-align: center;
+    padding: 4rem;
+    box-sizing: border-box;
+}
+
+@keyframes fire-sm {
+    from {
+        background-image: radial-gradient(#ffff743e, transparent 70%);
+        opacity: 0;
+        background-size: 0 0;
+        background-position-y: 100px;
+    }
+    50% {
+        background-image: radial-gradient(#ffff4c, transparent 70%);
+        opacity: 1;
+        background-size: 100px 100px;
+        background-position-y: 0px;
+    }
+    to {
+        background-image: radial-gradient(#ffff743e, transparent 70%);
+            opacity: 0;
+            background-size: 0 0;
+            background-position-y: 100px;
+    }
+}
+@keyframes fire-md {
+    from {
+        background-image: radial-gradient(#ffb92d7e, transparent 70%);
+        opacity: 0;
+        background-size: 0 0;
+        background-position-y: 200px;
+    }
+    50% {
+        background-image: radial-gradient(#ffb92d, transparent 70%);
+        opacity: 1;
+        background-size: 200px 200px;
+        background-position-y: 0px;
+    }
+    to {
+        background-image: radial-gradient(#ffb92d7e, transparent 70%);
+            opacity: 0;
+            background-size: 0 0;
+            background-position-y: 200px;
+    }
+}
+@keyframes fire-lg {
+    from {
+        background-image: radial-gradient(#ffb92d7e, transparent 70%);
+        opacity: 0;
+        background-size: 0 0;
+        background-position-y: 300px;
+    }
+    50% {
+        background-image: radial-gradient(#ff5100, transparent 70%);
+        opacity: 1;
+        background-size: 250px 300px;
+        background-position-y: 0px;
+    }
+    to {
+        background-image: radial-gradient(#ffb92d7e, transparent 70%);
+            opacity: 0;
+            background-size: 0 0;
+            background-position-y: 300px;
+    }
+}
+@keyframes wave {
+    0% {
+        left:-0%;
+    }
+    33% {
+        left: -5%;
+    }
+    66% {
+        left: -0%;
+    }
+    100% {
+        left: -5%;
+    }
+}

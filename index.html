@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="ship.css">
+    <link rel="stylesheet" href="rocket.css">
+    <link rel="stylesheet" href="explosion.css">
+</head>
+<body onkeydown="shoot(event)">
+    <header class="l-header">HEADER</header>
+    <section class="l-content">
+
+        
+        <div class="sea" 
+             onmousemove="moveScope(event)">
+            <div class="wave"></div>
+        </div>
+
+    </section>
+    <footer class="l-footer">Score: <span id="score"></span></footer>
+
+    <script src="main.js"></script>
+</body>
+</html>

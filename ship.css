@@ -1,0 +1,137 @@
+.ship {
+  width: 500px;
+  height: 154.3209876543px;
+  border-radius: 0 0 41.6666666667px 0;
+  position: absolute;
+  bottom: 4%;
+  overflow: hidden;
+}
+.ship .hull {
+  position: relative;
+  z-index: 13;
+}
+.ship .hull .gun {
+  top: 96.1538461538px;
+  left: 47.619047619px;
+  width: 33.3333333333px;
+  height: 25px;
+  border-radius: 12.5px;
+  position: absolute;
+  background-color: #888;
+}
+.ship .hull .gun .tube {
+  transform: translate(-20.8333333333px, 2.5px) rotate(15deg);
+  height: 3.3333333333px;
+  width: 41.6666666667px;
+  background-color: #888;
+}
+.ship .hull .gun_front {
+  top: 100px;
+  right: 49.2610837438px;
+  width: 33.3333333333px;
+  height: 25px;
+  border-radius: 12.5px;
+  position: absolute;
+  background-color: #888;
+}
+.ship .hull .gun_front .tube {
+  transform: translate(10px, 2.5px) rotate(-15deg);
+  height: 3.3333333333px;
+  width: 41.6666666667px;
+  background-color: #888;
+}
+.ship .hull .gun_top {
+  top: 81.6993464052px;
+  left: 172.4137931034px;
+  width: 33.3333333333px;
+  height: 25px;
+  border-radius: 12.5px;
+  position: absolute;
+  background-color: #888;
+}
+.ship .hull .gun_top .tube {
+  transform: translate(-20.8333333333px, 2.5px) rotate(15deg);
+  height: 3.3333333333px;
+  width: 41.6666666667px;
+  background-color: #888;
+}
+.ship .hull .base {
+  width: 284.0909090909px;
+  height: 17.2413793103px;
+  position: absolute;
+  top: 93.4579439252px;
+  left: 120.7729468599px;
+  z-index: 11;
+  background-image: linear-gradient(72deg, transparent 10%, #888 11%, #888 98%, transparent 98%), linear-gradient(-72deg, transparent 40%, #888 40%, #888 98%, transparent 98%);
+}
+.ship .hull .on_base {
+  width: 129.1989664083px;
+  height: 16.6666666667px;
+  position: absolute;
+  top: 79.3650793651px;
+  left: 250px;
+  z-index: 10;
+  background-image: linear-gradient(52deg, transparent 10%, #555 41%, #555 93%, transparent 93%), linear-gradient(-52deg, transparent 40%, #555 40%, #555 93%, transparent 93%);
+}
+.ship .hull .on_on_base {
+  width: 83.3333333333px;
+  height: 16.6666666667px;
+  position: absolute;
+  top: 70.0280112045px;
+  left: 270.2702702703px;
+  z-index: 9;
+  background-image: linear-gradient(72deg, #888 0%, #888 93%, transparent 93%);
+}
+.ship .hull .square_one {
+  width: 10px;
+  height: 50px;
+  position: absolute;
+  top: 41.6666666667px;
+  left: 276.2430939227px;
+  z-index: 8;
+  background-color: #555;
+}
+.ship .hull .square_two {
+  width: 6.6666666667px;
+  height: 75.7575757576px;
+  position: absolute;
+  top: 4.1666666667px;
+  left: 294.1176470588px;
+  z-index: 8;
+  background-color: #888;
+}
+.ship .hull .square_three {
+  width: 15.8227848101px;
+  height: 50px;
+  position: absolute;
+  top: 37.5939849624px;
+  left: 316.4556962025px;
+  z-index: 8;
+  background-color: #555;
+}
+.ship .hull .square_four {
+  width: 33.3333333333px;
+  height: 4.1666666667px;
+  position: absolute;
+  top: 0;
+  left: 282.4858757062px;
+  z-index: 8;
+  background-color: #555;
+}
+.ship .bridge {
+  position: absolute;
+  height: 29.1715285881px;
+  width: 500px;
+  bottom: 16.6666666667px;
+  background-image: linear-gradient(-111deg, #555 97.8%, transparent 97.8%);
+  transform: rotate(0.5deg);
+  z-index: 14;
+}
+.ship .chimney {
+  position: absolute;
+  height: 20.8333333333px;
+  width: 500px;
+  bottom: 0;
+  z-index: 15;
+  background-image: linear-gradient(-105deg, brown 96.8%, transparent 96.8%);
+}/*# sourceMappingURL=ship.css.map */

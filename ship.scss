@@ -1,0 +1,156 @@
+$lightGrey: #888;
+$darkGrey: #555;
+$shipSize: 500px;
+
+@mixin gun {
+    width: calc($shipSize / 15);
+    height: calc($shipSize / 20);
+    border-radius: calc($shipSize / 40);
+    position: absolute;
+    background-color: $lightGrey;
+}
+
+@mixin tube {
+    height: calc($shipSize / 150);
+    width: calc($shipSize / 12);
+    background-color: $lightGrey;
+}
+
+.ship {
+    width: $shipSize;
+    height: calc($shipSize / 3.24);
+    border-radius: 0 0 calc($shipSize / 12) 0;
+    position: absolute;
+    bottom: 4%;
+    overflow: hidden;
+
+    .hull {
+        position: relative;
+        z-index: 13;
+
+        .gun {
+            top: calc($shipSize / 5.2);
+            left: calc($shipSize / 10.5);
+            @include gun();
+
+            .tube {
+                transform: translate(-(calc($shipSize / 24)), calc($shipSize / 200)) rotate(15deg);
+                @include tube();
+            }
+        }
+
+        .gun_front {
+            top: calc($shipSize / 5);
+            right: calc($shipSize / 10.15);
+            @include gun();
+
+            .tube {
+                transform: translate(calc($shipSize / 50), calc($shipSize / 200)) rotate(-15deg);
+                @include tube();
+            }
+        }
+
+        .gun_top {
+            top: calc($shipSize / 6.12);
+            left: calc($shipSize / 2.9);
+            @include gun();
+
+            .tube {
+                transform: translate(-(calc($shipSize / 24)), calc($shipSize / 200)) rotate(15deg);
+                @include tube();
+            }
+        }
+
+        .base {
+            width: calc($shipSize / 1.76);
+            height: calc($shipSize / 29);
+            position: absolute;
+            top: calc($shipSize / 5.35);
+            left: calc($shipSize / 4.14);
+            z-index: 11;
+            background-image: linear-gradient(72deg, transparent 10%, $lightGrey 11%, $lightGrey 98%, transparent 98%),
+                linear-gradient(-72deg, transparent 40%, $lightGrey 40%, $lightGrey 98%, transparent 98%);
+        }
+
+        .on_base {
+            width: calc($shipSize / 3.87);
+            height: calc($shipSize / 30);
+            position: absolute;
+            top: calc($shipSize / 6.3);
+            left: calc($shipSize / 2);
+            z-index: 10;
+            background-image: linear-gradient(52deg, transparent 10%, $darkGrey 41%, $darkGrey 93%, transparent 93%),
+                linear-gradient(-52deg, transparent 40%, $darkGrey 40%, $darkGrey 93%, transparent 93%);
+        }
+
+        .on_on_base {
+            width: calc($shipSize / 6);
+            height: calc($shipSize / 30);
+            position: absolute;
+            top: calc($shipSize / 7.14);
+            left: calc($shipSize / 1.85);
+            z-index: 9;
+            background-image: linear-gradient(72deg, $lightGrey 0%, $lightGrey 93%, transparent 93%);
+        }
+
+        .square_one {
+            width: calc($shipSize / 50);
+            height: calc($shipSize / 10);
+            position: absolute;
+            top: calc($shipSize / 12);
+            left: calc($shipSize / 1.81);
+            z-index: 8;
+            background-color: $darkGrey
+        }
+
+        .square_two {
+            width: calc($shipSize / 75);
+            height: calc($shipSize / 6.6);
+            position: absolute;
+            top: calc($shipSize / 120);
+            left: calc($shipSize / 1.7);
+            z-index: 8;
+            background-color: $lightGrey;
+        }
+
+        .square_three {
+            width: calc($shipSize / 31.6);
+            height: calc($shipSize / 10);
+            position: absolute;
+            top: calc($shipSize / 13.3);
+            left: calc($shipSize / 1.58);
+            z-index: 8;
+            background-color: $darkGrey;
+        }
+
+        .square_four {
+            width: calc($shipSize / 15);
+            height: calc($shipSize / 120);
+            position: absolute;
+            top: 0;
+            left: calc($shipSize / 1.77);
+            z-index: 8;
+            background-color: $darkGrey;
+        }
+    }
+
+    .bridge {
+        position: absolute;
+        height: calc($shipSize / 17.14);
+        width: $shipSize;
+        bottom: calc($shipSize / 30);
+        background-image: linear-gradient(-111deg, $darkGrey 97.8%, transparent 97.8%);
+        transform: rotate(.5deg);
+        z-index: 14;
+    }
+
+    .chimney {
+        position: absolute;
+        // border: 1px solid brown;
+        height: calc($shipSize / 24);
+        width: $shipSize;
+        bottom: 0;
+        z-index: 15;
+        background-image: linear-gradient(-105deg, brown 96.8%, transparent 96.8%);
+    }
+}

@@ -51,36 +51,46 @@ let layers = [
     },
 ];
 
+let seaDiv = document.querySelector('.sea')
+
+let timerShip
+let timerRochet
+let ridx
+let score = 0
+let layerWidth = innerWidth * (1 + 1.2)
+// console.log(layerW)
+
+let offset = 0.6 * innerWidth + 100
+// console.log(offset)
+
+// let l = document.querySelector('.layer')
+// const leftValue = window.getComputedStyle(l).left;
+
+document.addEventListener('DOMContentLoaded', function() {
+  const l = document.querySelector('.layer');
+  const leftValue = window.getComputedStyle(l).left;
+  console.log(leftValue);
+});
+
 let ship = {
     x: -600,
     dir: -1,
     layer: 1
-
 }
 
 let scope = {
-    x: 0,
-}
+    x: 0,}
 
 let rocket = {
     x: 800,
     layer: 0, 
     shoot: false,
 }
+
 let explosion = {
-    x: 800,
+    x: layerWidth * 0.5,
     layer: 1
 }
-
-let timerShip
-
-let timerRochet
-
-let ridx
-
-let score = 0
-
-let seaDiv = document.querySelector('.sea')
 
 const render = () => {
     
@@ -157,11 +167,12 @@ const render = () => {
     </div>
     `
 }
-
+// increment or decrement the score
 const scoreRender = () => {
     let scoreDiv = document.getElementById('score')
     scoreDiv.textContent = score
 }
+
 // move scope along the X axis
 const moveScope = (e) => {  
     scope.x = e.clientX - 100
@@ -173,9 +184,9 @@ const shoot = (e) => {
     if(e.code == 'Space' && !rocket.shoot) {
         rocket.shoot = true 
         rocket.layer = 0
-        rocket.x = scope.x + 580
+        rocket.x = scope.x + offset
         layers[0].rochet = true
-
+        debugger
         clearInterval(timerRochet) 
 
         timerRochet = setInterval(() =>{
@@ -191,7 +202,7 @@ const shoot = (e) => {
                 rocket.layer ++
                 layers[rocket.layer].rochet = true
 
-                if (rocket.layer == ship.layer && Math.abs(rocket.x - ship.x) < 400) {
+                if (rocket.layer == ship.layer && Math.abs(ship.x - rocket.x) < 350) {
                     console.log( rocket.x, ship.x)
                     alert('boom!')  
                     resetShip()  
@@ -214,43 +225,43 @@ const shoot = (e) => {
 const resetShip = (i) => {
     for (let i = 0; i <layers.length; i++) {
         layers[i].ship = false
-        layers[i].explosion = false
+        // layers[i].explosion = false
     }
     
     ridx = Math.floor(Math.random() * 10)
     ship.layer = ridx 
     layers[ridx].ship = true
-    layers[ridx].explosion = true
+    // layers[ridx].explosion = true
 
     let rand = Math.random()
 
     if ( rand >= 0.5 ) {
-        ship.x = innerWidth+600
+        ship.x = layerWidth + 600
         ship.dir = ship.dir
     } else {        
-        ship.x = -600
+        ship.x = - 600
         ship.dir = 1
     }
     
     clearInterval(timerShip)
-
     timerShip = setInterval(() => {
         ship.x += ship.dir
 
-        if(ship.dir == 1 && ship.x > innerWidth+600) {
+        if(ship.dir == 1 && ship.x > layerWidth+600) {
             resetShip()
         }
         if(ship.dir == -1 && ship.x < -600) {
             resetShip()
         }
         render()
-    }, 1  )
+    }, 1 )
 }
 
-// window.addEventListener('resize', () => {
-//   resetShip()
-//   render()
-// });
+window.addEventListener('resize', () => {
+resetShip()
+scoreRender()
+render()
+});
 
 resetShip()
 scoreRender()

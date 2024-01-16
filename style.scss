@@ -18,19 +18,79 @@ body {
 }
 
 .l-content {
+    position: relative;
     overflow: hidden;
     background-color: #333;
     height: 60vh;
 
     .sea {
-        position: relative;
+        // cursor: none;
+        position: absolute;
+        height: 100%; 
+        perspective: 800px;
+        background-image: linear-gradient( $waveColor, #023946 35%);
+        perspective-origin: center top;
+        // inset: 0;
+        left: -60%;
+        right: -60%;
+                        
+            .wave {
+                @for $i from 0 to 10 {
+                        &:nth-child(#{$i+1}) {
+                            z-index: 20 - $i;
+                            transform: translateZ(-95px * $i);
+                            filter: brightness(100% -$i *5) blur($i * .5px);
+                        }
+                    }
+
+                // border: 1px solid red;
+                height: 120px;
+                width: 100%;
+                background-image: linear-gradient(transparent 50%, $waveColor 50%, $waveColor 50%);
+                position: absolute;
+                bottom: 0%;
+                z-index: 12;
+        
+                @for $i from 0 to 10 {
+                    &:nth-child(#{$i+1}) {
+                        animation: wave 5s + $i * 1s infinite;
+                        animation-delay: random() * 1s;
+                    }
+                }
+        
+                &::before {
+                    content: "";
+                    display: block;
+                    // border: 1px solid yellow;
+                    transform: translateY(-0px);
+                    height: 25px;
+                    background-image: radial-gradient($waveColor 29%, transparent 30%);
+                    background-position: 80px 78px;
+                    background-size: 160px 100px;
+                }
+        
+                &::after {
+                    content: "";
+                    display: block;
+                    // border: 1px solid green;
+                    transform: translateY(0px);
+                    height: 51px;
+                    background-image: radial-gradient(transparent 40%, $waveColor 42%);
+                    background-position: 0 -52px;
+                    background-size: 160px 100px;
+                }
+            }
+        }
+        
+    .render {
+        position: absolute;
         height: 100%;
         width: 100%;
         perspective: 800px;
         perspective-origin: center top;
-        background-image: linear-gradient( $waveColor, #023946 35%);
         cursor: none;
-        
+    
+    
         .layer {
             @for $i from 0 to 10 {
                 &:nth-child(#{$i+1}) {
@@ -41,87 +101,53 @@ body {
                 }
             }
             position: absolute;
+            height: 100%;
             inset: 0;
             left: -60%;
             right: -60%;
+            // border: 1px solid gold;
+        }
+
+        .scope {
+            width: 200px;
+            height: 200px;
+            border: 2px solid $scopeColor;
+            border-radius: 100%;
+            color: $scopeColor;
+            font-size: 40px;
+            position: absolute;
+            overflow: hidden;
+            z-index: 50;
+            align-self: unset;
+            bottom: 0;
+
+            .mid {
+                width: 200px;
+                height: 200px;
+                position: absolute;
+
+                text-align: center;
+                line-height: 200px;
+            }
+
+            .h {
+                width: 400px;
+                height: 200px;
+                position: absolute;
+                line-height: 190px;
+                letter-spacing: 173px;
+            }
+
+            .v {
+                width: 200px;
+                height: 400px;
+                position: absolute;
+                line-height: 210px;
+                letter-spacing: 173px;
+                writing-mode: vertical-lr;
+            }
         }
         
-        .wave {
-            // border: 1px solid red;
-            height: 120px;
-            width: 100%;
-            background-image: linear-gradient(transparent 50%, $waveColor 50%, $waveColor 50%);
-            position: absolute;
-            bottom: 0%;
-            z-index: 12;
-
-            @for $i from 0 to 10 {
-                    &:nth-child(#{$i+1}) {                    
-                        animation: wave 5s + $i * 1s infinite;
-                        animation-delay: random() * 1s;
-                    }
-            } 
-
-            &::before {
-                content: "";
-                display: block;
-                // border: 1px solid yellow;
-                transform: translateY(-0px);
-                height: 25px;
-                background-image: radial-gradient($waveColor 29%, transparent 30%);
-                background-position: 80px 78px;
-                background-size: 160px 100px;
-            }
-
-            &::after {
-                content: "";
-                display: block;
-                // border: 1px solid green;
-                transform: translateY(0px);
-                height: 51px;
-                background-image: radial-gradient(transparent 40%, $waveColor 42%);
-                background-position: 0 -52px;
-                background-size: 160px 100px;
-            }
-        }
-           
-    }
-    .scope {
-        width: 200px;
-        height: 200px;
-        border: 2px solid $scopeColor;
-        border-radius: 100%;
-        color: $scopeColor;
-        font-size: 40px;
-        position: absolute;
-        overflow: hidden;
-        z-index: 50;
-        align-self: unset;
-        bottom: 0;
-
-        .mid {
-            width: 200px;
-            height: 200px;
-            position: absolute;
-
-            text-align: center;
-            line-height: 200px;
-        }
-        .h {
-            width: 400px;
-            height: 200px;
-            position: absolute;
-            line-height: 190px;
-            letter-spacing: 173px;
-        }
-        .v {
-            width: 200px;
-            height: 400px;
-            position: absolute;
-            line-height: 210px;
-            letter-spacing: 173px;
-            writing-mode: vertical-lr;
-        }
     }
 }
 
@@ -197,15 +223,12 @@ body {
 }
 @keyframes wave {
     0% {
-        left:-0%;
+        left: 0%;
     }
-    33% {
-        left: -5%;
-    }
-    66% {
-        left: -0%;
-    }
+    50% {
+        left: -2%;
+    }    
     100% {
-        left: -5%;
+        left: 0%;
     }
 }

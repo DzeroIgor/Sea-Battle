@@ -52,6 +52,7 @@ let layers = [
 ];
 
 let seaDiv = document.querySelector('.sea')
+let renderDiv = document.querySelector('.render')
 
 let timerShip
 let timerRochet
@@ -60,7 +61,7 @@ let score = 0
 let layerWidth = innerWidth * (1 + 1.2)
 // console.log(layerW)
 
-let offset = 0.6 * innerWidth + 100
+let offset = 0.6 * innerWidth + 80
 // console.log(offset)
 
 // let l = document.querySelector('.layer')
@@ -75,7 +76,8 @@ document.addEventListener('DOMContentLoaded', function() {
 let ship = {
     x: -600,
     dir: -1,
-    layer: 1
+    layer: 1,
+    index: 20 - 1,
 }
 
 let scope = {
@@ -88,13 +90,20 @@ let rocket = {
 }
 
 let explosion = {
-    x: layerWidth * 0.5,
+    x: 1000,
     layer: 1
+}
+const renderWave = () => {
+    for(let i = 0; i <=9; i++) {
+        seaDiv.innerHTML += `
+        <div class="wave"></div>
+        `
+    }
 }
 
 const render = () => {
     
-    seaDiv.innerHTML = ``
+    renderDiv.innerHTML = ``
 
     for(let i = 0; i <=9; i++) {
 
@@ -102,7 +111,7 @@ const render = () => {
         
         if(layers[i].ship) {
             objects += `
-            <div class="ship" style="left: ${ship.x}px">
+            <div class="ship" style="left: ${ship.x}px; z-index: calc(19 - ${ship.layer});">
                 <div class="hull">
                     <div class="gun">
                         <div class="tube"></div>
@@ -141,25 +150,24 @@ const render = () => {
             `
         }
 
-        if(layers[i].ship == layers[i].rochet) {             
+        if(layers[i].explosion) {             
             objects += `
-            <div class="explosion" style="left: ${explosion.x}px;">
-                <div class="fire-bottom-sm"></div>
-                <div class="fire-bottom-md"></div>
-                <div class="fire-bottom-lg"></div>
-            </div>            
-            `
+                <div class="explosion" style="left: ${explosion.x}px;">
+                    <div class="fire-bottom-sm"></div>
+                    <div class="fire-bottom-md"></div>
+                    <div class="fire-bottom-lg"></div>
+                </div>
+            `;
         }
 
-        seaDiv.innerHTML += `
+        renderDiv.innerHTML += `
         <div class="layer"> <!-- layer ${i} -->
-            ${objects}
-            <div class="wave"></div>
+            ${objects}            
         </div>
         `
     }
 
-    seaDiv.innerHTML += `
+    renderDiv.innerHTML += `
     <div class="scope" style="left: ${scope.x}px;">
         <div class="mid">+</div>
         <div class="h">--</div>
@@ -167,6 +175,7 @@ const render = () => {
     </div>
     `
 }
+
 // increment or decrement the score
 const scoreRender = () => {
     let scoreDiv = document.getElementById('score')
@@ -182,11 +191,60 @@ const moveScope = (e) => {
 // change rocket on the layers
 const shoot = (e) => {    
     if(e.code == 'Space' && !rocket.shoot) {
+        rocket.shoot = true;
+        rocket.layer = 0;
+        rocket.x = scope.x + offset;
+        layers[0].rochet = true;
+        clearInterval(timerRochet);
+
+        timerRochet = setInterval(() => {
+            if (rocket.layer == 9) {
+                clearInterval(timerRochet);
+                rocket.shoot = false;
+                layers[rocket.layer].rochet = false;
+                score -= 10;
+                scoreRender();
+            } else {
+                layers[rocket.layer].rochet = false;
+                rocket.layer++;
+                layers[rocket.layer].rochet = true;
+
+                if (checkCollision()) {}
+            }
+        }, 100 );
+    }
+}
+
+// Funcție pentru a verifica coliziunea
+const checkCollision = () => {
+    if (rocket.layer == ship.layer && Math.abs(ship.x - rocket.x) < 350) {
+        explosion.x = ship.x + 300;
+        explosion.layer = ship.layer;
+        layers[explosion.layer].explosion = true;
+        console.log("ship X is " + ship.x, "ex. X is " + explosion.x);
+        console.log("ship lay is " + ship.layer, "ex. lay is " + explosion.layer);
+        debugger
+
+        clearInterval(timerRochet)
+        rocket.shoot = false
+        layers[rocket.layer].rochet = false
+        // layers[explosion.layer].explosion = false;
+
+        score += 10;
+        scoreRender();
+
+        resetShip();
+        return true; // Coliziune detectată
+    }
+    return false; // Nu există coliziune
+}
+
+/* const shoot = (e) => {    
+    if(e.code == 'Space' && !rocket.shoot) {
         rocket.shoot = true 
         rocket.layer = 0
         rocket.x = scope.x + offset
         layers[0].rochet = true
-        debugger
         clearInterval(timerRochet) 
 
         timerRochet = setInterval(() =>{
@@ -203,35 +261,34 @@ const shoot = (e) => {
                 layers[rocket.layer].rochet = true
 
                 if (rocket.layer == ship.layer && Math.abs(ship.x - rocket.x) < 350) {
-                    console.log( rocket.x, ship.x)
-                    alert('boom!')  
+                    // console.log( rocket.x, ship.x)
+                    // alert('boom!')  
+                    explosion.x = ship.x;  
                     resetShip()  
+                    console.log("ship X is " + ship.x, "ex. X is" + explosion.x)
+                    console.log("ship lay is " + ship.layer, "ex. lay is" + explosion.layer)
 
                     clearInterval(timerRochet)
                     rocket.shoot = false
                     layers[rocket.layer].rochet = false
 
-                    // explosion.x = rocket.x 
-                    // layers[ridx].explosion = true             //?????????????
                     score += 10
                     scoreRender()
                 }
             }
         }, 100 )
     }
-}
+}*/
 
 // change the direction and layer of the ship
 const resetShip = (i) => {
     for (let i = 0; i <layers.length; i++) {
         layers[i].ship = false
-        // layers[i].explosion = false
     }
     
     ridx = Math.floor(Math.random() * 10)
     ship.layer = ridx 
     layers[ridx].ship = true
-    // layers[ridx].explosion = true
 
     let rand = Math.random()
 
@@ -245,9 +302,9 @@ const resetShip = (i) => {
     
     clearInterval(timerShip)
     timerShip = setInterval(() => {
-        ship.x += ship.dir
+        ship.x += 5  // ship.dir
 
-        if(ship.dir == 1 && ship.x > layerWidth+600) {
+        if(ship.dir == 1 && ship.x > layerWidth + 600) {
             resetShip()
         }
         if(ship.dir == -1 && ship.x < -600) {
@@ -257,12 +314,7 @@ const resetShip = (i) => {
     }, 1 )
 }
 
-window.addEventListener('resize', () => {
+renderWave()
 resetShip()
-scoreRender()
 render()
-});
-
-resetShip()
 scoreRender()
-render()

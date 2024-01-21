@@ -54,11 +54,13 @@ let layers = [
 let seaDiv = document.querySelector('.sea')
 let renderDiv = document.querySelector('.render')
 let renderExplosionDiv = document.querySelector('.explosion-render')
+let overDiv = document.querySelector('.over')
 
 let timerShip
 let timerRochet
 let ridx
-let score = 0
+let rand
+let score = 100
 
 let layerWidth = innerWidth * (1 + 1.2)
 let offset = 0.6 * innerWidth + 80
@@ -193,6 +195,9 @@ const renderExplosion = () => {
 const scoreRender = () => {
     let scoreDiv = document.getElementById('score')
     scoreDiv.textContent = score
+    if (score == 0 ) {
+        overDiv.classList.add("d_none")
+    }
 }
 
 
@@ -205,7 +210,7 @@ const moveScope = (e) => {
 
 // change rocket on the layers
 const shoot = (e) => {    
-    if(e.code == 'Space' && !rocket.shoot) {
+    if(e.code == 'Space' && !rocket.shoot && !layers[rocket.layer].explosion) {
         rocket.shoot = true;
         rocket.layer = 0;
         rocket.x = scope.x + offset;
@@ -226,34 +231,33 @@ const shoot = (e) => {
 
                 if (checkCollision()) {}
             }
-        }, 100 );
+        }, 100);
     }
 }
 
-
 // function to check collision
 const checkCollision = () => {
-    if (rocket.layer == ship.layer && Math.abs(ship.x - rocket.x) < 200) {
+    if (rocket.layer == ship.layer && rocket.x - ship.x > 0 && rocket.x - ship.x < 500) {          // rocket.layer == ship.layer && Math.abs(ship.x - rocket.x) < 350
         explosion.layer = ship.layer;
         layers[explosion.layer].explosion = true;
         explosion.x = ship.x + 100;
         
+        console.log(ship.x + " " + rocket.x)
         clearInterval(timerRochet)
         rocket.shoot = false
         layers[rocket.layer].rochet = false
         renderExplosion()
 
-        score += 10;
-        scoreRender();
-
         setTimeout(() => {
             resetShip();
         }, 3000);
+        score += 10;
+        scoreRender();
+        
         return true; // Collision detected
     }
     return false; // There is no collision
 }
-
 
 // change the direction and layer of the ship
 const resetShip = () => {
@@ -266,7 +270,7 @@ const resetShip = () => {
     ship.layer = ridx;
     layers[ridx].ship = true;
 
-    let rand = Math.random();
+    rand = Math.random();
 
     if (rand >= 0.5) {
         ship.x = layerWidth + 600;
@@ -295,9 +299,7 @@ const resetShip = () => {
     }, 1);
 }
 
-
 renderWave()
-resetShip()
-renderExplosion()
+resetShip() 
 render()
 scoreRender()

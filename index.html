@@ -9,8 +9,14 @@
     <link rel="stylesheet" href="explosion.css">
 </head>
 <body onkeydown="shoot(event)">
-    <header class="l-header">HEADER</header>
+    <header class="l-header">
+        <p>SEA BATTLE</p>
+    </header>
     <section class="l-content" onmousemove="moveScope(event)">
+        <div class="over">
+            GAME OVER
+            <button onclick="location.reload()">RESET</button>
+        </div>
 
         <div class="sea">
         </div>

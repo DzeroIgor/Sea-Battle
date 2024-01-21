@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=DotGothic16&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap");
 body {
   margin: 0;
   color: #fff;
@@ -7,7 +8,16 @@ body {
 .l-header {
   background-color: #222;
   height: 20vh;
-  text-align: center;
+  font-family: "Fredericka the Great", serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.l-header p {
+  font-size: 6rem;
+  color: #54d7f5;
+  display: block;
+  letter-spacing: 0.25rem;
 }
 
 .l-content {
@@ -37,70 +47,70 @@ body {
   z-index: 20;
   transform: translateZ(0px);
   animation: wave 5s infinite;
-  animation-delay: 0.3397317791s;
+  animation-delay: 0.6534303093s;
 }
 .l-content .sea .wave:nth-child(2) {
   filter: brightness(95%) blur(0.5px);
   z-index: 19;
   transform: translateZ(-95px);
   animation: wave 6s infinite;
-  animation-delay: 0.3050441248s;
+  animation-delay: 0.3656239044s;
 }
 .l-content .sea .wave:nth-child(3) {
   filter: brightness(90%) blur(1px);
   z-index: 18;
   transform: translateZ(-190px);
   animation: wave 7s infinite;
-  animation-delay: 0.576759562s;
+  animation-delay: 0.1145350571s;
 }
 .l-content .sea .wave:nth-child(4) {
   filter: brightness(85%) blur(1.5px);
   z-index: 17;
   transform: translateZ(-285px);
   animation: wave 8s infinite;
-  animation-delay: 0.7620592456s;
+  animation-delay: 0.0108965783s;
 }
 .l-content .sea .wave:nth-child(5) {
   filter: brightness(80%) blur(2px);
   z-index: 16;
   transform: translateZ(-380px);
   animation: wave 9s infinite;
-  animation-delay: 0.5641949563s;
+  animation-delay: 0.6717630572s;
 }
 .l-content .sea .wave:nth-child(6) {
   filter: brightness(75%) blur(2.5px);
   z-index: 15;
   transform: translateZ(-475px);
   animation: wave 10s infinite;
-  animation-delay: 0.6045431308s;
+  animation-delay: 0.6242926763s;
 }
 .l-content .sea .wave:nth-child(7) {
   filter: brightness(70%) blur(3px);
   z-index: 14;
   transform: translateZ(-570px);
   animation: wave 11s infinite;
-  animation-delay: 0.5559432653s;
+  animation-delay: 0.2398182893s;
 }
 .l-content .sea .wave:nth-child(8) {
   filter: brightness(65%) blur(3.5px);
   z-index: 13;
   transform: translateZ(-665px);
   animation: wave 12s infinite;
-  animation-delay: 0.1720751867s;
+  animation-delay: 0.3643550098s;
 }
 .l-content .sea .wave:nth-child(9) {
   filter: brightness(60%) blur(4px);
   z-index: 12;
   transform: translateZ(-760px);
   animation: wave 13s infinite;
-  animation-delay: 0.1169974053s;
+  animation-delay: 0.0002228307s;
 }
 .l-content .sea .wave:nth-child(10) {
   filter: brightness(55%) blur(4.5px);
   z-index: 11;
   transform: translateZ(-855px);
   animation: wave 14s infinite;
-  animation-delay: 0.9693790027s;
+  animation-delay: 0.2080880074s;
 }
 .l-content .sea .wave::before {
   content: "";
@@ -139,52 +149,42 @@ body {
 .l-content .explosion-render .layer-explosion:nth-child(1) {
   z-index: 25;
   transform: translateZ(0px);
-  filter: brightness(100%) blur(0px);
 }
 .l-content .explosion-render .layer-explosion:nth-child(2) {
   z-index: 24;
   transform: translateZ(-95px);
-  filter: brightness(95%) blur(0.5px);
 }
 .l-content .explosion-render .layer-explosion:nth-child(3) {
   z-index: 23;
   transform: translateZ(-190px);
-  filter: brightness(90%) blur(1px);
 }
 .l-content .explosion-render .layer-explosion:nth-child(4) {
   z-index: 22;
   transform: translateZ(-285px);
-  filter: brightness(85%) blur(1.5px);
 }
 .l-content .explosion-render .layer-explosion:nth-child(5) {
   z-index: 21;
   transform: translateZ(-380px);
-  filter: brightness(80%) blur(2px);
 }
 .l-content .explosion-render .layer-explosion:nth-child(6) {
   z-index: 20;
   transform: translateZ(-475px);
-  filter: brightness(75%) blur(2.5px);
 }
 .l-content .explosion-render .layer-explosion:nth-child(7) {
   z-index: 19;
   transform: translateZ(-570px);
-  filter: brightness(70%) blur(3px);
 }
 .l-content .explosion-render .layer-explosion:nth-child(8) {
   z-index: 18;
   transform: translateZ(-665px);
-  filter: brightness(65%) blur(3.5px);
 }
 .l-content .explosion-render .layer-explosion:nth-child(9) {
   z-index: 17;
   transform: translateZ(-760px);
-  filter: brightness(60%) blur(4px);
 }
 .l-content .explosion-render .layer-explosion:nth-child(10) {
   z-index: 16;
   transform: translateZ(-855px);
-  filter: brightness(55%) blur(4.5px);
 }
 .l-content .render {
   position: absolute;
@@ -295,6 +295,28 @@ body {
   box-sizing: border-box;
   font-family: "DotGothic16", sans-serif;
   font-size: 2em;
+}
+
+.over {
+  background-color: #838383;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  line-height: 25rem;
+  font-size: 10rem;
+  font-family: "DotGothic16", sans-serif;
+  display: none;
+}
+.over button {
+  display: block;
+  margin: auto;
+  font-size: 2rem;
+  padding: 0.5rem 4rem;
+  font-weight: 600;
+}
+
+.d_none {
+  display: block;
 }
 
 @keyframes wave {

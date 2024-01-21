@@ -59,7 +59,6 @@ let overDiv = document.querySelector('.over')
 let timerShip
 let timerRochet
 let ridx
-let rand
 let score = 100
 
 let layerWidth = innerWidth * (1 + 1.2)
@@ -242,7 +241,7 @@ const checkCollision = () => {
         layers[explosion.layer].explosion = true;
         explosion.x = ship.x + 100;
         
-        console.log(ship.x + " " + rocket.x)
+        // console.log(ship.x + " " + rocket.x)
         clearInterval(timerRochet)
         rocket.shoot = false
         layers[rocket.layer].rochet = false
@@ -266,15 +265,16 @@ const resetShip = () => {
         layers[i].explosion = false;  // reset to false all explosion
     }
 
-    ridx = Math.floor(Math.random() * 10);
+    ridx = Math.floor(Math.random() * 9) + 1;
     ship.layer = ridx;
     layers[ridx].ship = true;
 
-    rand = Math.random();
+    let rand = Math.random();
+    console.log(rand)
 
     if (rand >= 0.5) {
         ship.x = layerWidth + 600;
-        ship.dir = ship.dir;
+        ship.dir = -1;
     } else {
         ship.x = -600;
         ship.dir = 1;
@@ -301,5 +301,4 @@ const resetShip = () => {
 
 renderWave()
 resetShip() 
-render()
 scoreRender()

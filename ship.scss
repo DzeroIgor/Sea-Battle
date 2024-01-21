@@ -1,6 +1,7 @@
 $lightGrey: #888;
 $darkGrey: #555;
 $shipSize: 500px;
+$waveColor: #00738d;
 
 @mixin gun {
     width: calc($shipSize / 15);
@@ -24,12 +25,8 @@ $shipSize: 500px;
     bottom: 5%;
     overflow: hidden;
 
-    // background-image: url(barca.png);
-    // background-size: cover;
-
     .hull {
         position: relative;
-        z-index: 13;
 
         .gun {
             top: calc($shipSize / 5.2);
@@ -70,7 +67,6 @@ $shipSize: 500px;
             position: absolute;
             top: calc($shipSize / 5.35);
             left: calc($shipSize / 4.14);
-            z-index: 11;
             background-image: linear-gradient(72deg, transparent 10%, $lightGrey 11%, $lightGrey 98%, transparent 98%),
                 linear-gradient(-72deg, transparent 40%, $lightGrey 40%, $lightGrey 98%, transparent 98%);
         }
@@ -81,7 +77,6 @@ $shipSize: 500px;
             position: absolute;
             top: calc($shipSize / 6.3);
             left: calc($shipSize / 2);
-            z-index: 10;
             background-image: linear-gradient(52deg, transparent 10%, $darkGrey 41%, $darkGrey 93%, transparent 93%),
                 linear-gradient(-52deg, transparent 40%, $darkGrey 40%, $darkGrey 93%, transparent 93%);
         }
@@ -92,7 +87,6 @@ $shipSize: 500px;
             position: absolute;
             top: calc($shipSize / 7.14);
             left: calc($shipSize / 1.85);
-            z-index: 9;
             background-image: linear-gradient(72deg, $lightGrey 0%, $lightGrey 93%, transparent 93%);
         }
 
@@ -102,7 +96,6 @@ $shipSize: 500px;
             position: absolute;
             top: calc($shipSize / 12);
             left: calc($shipSize / 1.81);
-            z-index: 8;
             background-color: $darkGrey
         }
 
@@ -112,7 +105,6 @@ $shipSize: 500px;
             position: absolute;
             top: calc($shipSize / 120);
             left: calc($shipSize / 1.7);
-            z-index: 8;
             background-color: $lightGrey;
         }
 
@@ -122,7 +114,6 @@ $shipSize: 500px;
             position: absolute;
             top: calc($shipSize / 13.3);
             left: calc($shipSize / 1.58);
-            z-index: 8;
             background-color: $darkGrey;
         }
 
@@ -132,7 +123,6 @@ $shipSize: 500px;
             position: absolute;
             top: 0;
             left: calc($shipSize / 1.77);
-            z-index: 8;
             background-color: $darkGrey;
         }
     }
@@ -144,7 +134,6 @@ $shipSize: 500px;
         bottom: calc($shipSize / 30);
         background-image: linear-gradient(-111deg, $darkGrey 97.8%, transparent 97.8%);
         transform: rotate(.5deg);
-        z-index: 14;
     }
 
     .chimney {
@@ -153,7 +142,29 @@ $shipSize: 500px;
         height: calc($shipSize / 24);
         width: $shipSize;
         bottom: 0;
-        z-index: 15;
         background-image: linear-gradient(-105deg, brown 96.8%, transparent 96.8%);
     }
+   .ship-vawe {
+       position: absolute;
+       height: calc($shipSize / 25);
+       width: $shipSize;
+       bottom: 0;
+       background-image: radial-gradient(circle, transparent 70%, $waveColor 71%);
+       background-size: (calc($shipSize / 25) * 3) (calc($shipSize / 25) * 3);
+       animation: ship_wave 3s infinite;
+   }
 }
+
+   @keyframes ship_wave {
+       0% {
+           background-position-y: calc($shipSize / 5.4);
+        }
+        
+        50% {
+            background-position-y: calc($shipSize / 6.2);
+        }
+        
+        100% {
+           background-position-y: calc($shipSize / 5.4);
+       }
+   }

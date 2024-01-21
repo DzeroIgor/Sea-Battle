@@ -52,7 +52,7 @@ body {
 
             @for $i from 0 to 10 {
                 &:nth-child(#{$i+1}) {
-                    filter: brightness(100% -$i *5) blur($i * .5px);
+                    filter: brightness(100% -$i *5) blur($i * .25px);
                     z-index: 20 - $i;
                     transform: translateZ(-95px * $i);
                     animation: wave 5s + $i * 1s infinite;
@@ -89,15 +89,13 @@ body {
         perspective: 800px;
         perspective-origin: center top;
         cursor: none;
-        z-index: 25; 
+        // z-index: 25; 
 
         .layer-explosion {
             @for $i from 0 to 10 {
                 &:nth-child(#{$i+1}) {
-                    // border: 1px solid red;
-                    z-index: 25 - $i;
+                    // z-index: 25 - $i;
                     transform: translateZ(-95px * $i);
-                    // filter: brightness(100% - $i * 5) blur($i * .5px);
                 }
             }
 
@@ -120,9 +118,9 @@ body {
         .layer {
             @for $i from 0 to 10 {
                 &:nth-child(#{$i+1}) {
-                    z-index: 19 - $i;
+                    // z-index: 19 - $i; 
                     transform: translateZ(-95px * $i);
-                    filter: brightness(100% - $i * 5) blur($i * .5px);
+                    filter: brightness(100% - $i * 5) blur($i * .25px);
                 }
             }
             position: absolute;

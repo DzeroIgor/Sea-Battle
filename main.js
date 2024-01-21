@@ -105,30 +105,31 @@ const render = () => {
     for(let i = 0; i <=9; i++) {
 
         let objects = ``
-                                                      // z-index: calc(19 - ${ship.layer});
+                                    
         if(layers[i].ship) {
             objects += `
-            <div class="ship" style="left: ${ship.x}px; ">
+            <div class="ship" style="left: ${ship.x}px;">
                 <div class="hull">
-                    <div class="gun">
-                        <div class="tube"></div>
-                    </div>
-                    <div class="gun_front">
-                        <div class="tube"></div>
-                    </div>
-                    <div class="gun_top">
-                        <div class="tube"></div>
-                    </div>
-                    <div class="base"></div>
-                    <div class="on_base"></div>
-                    <div class="on_on_base"></div>
-                    <div class="square_one"></div>
-                    <div class="square_two"></div>
-                    <div class="square_three"></div>
-                    <div class="square_four"></div>
+                <div class="gun">
+                    <div class="tube"></div>
                 </div>
-                <div class="bridge"></div>
-                <div class="chimney"></div>
+                <div class="gun_front">
+                    <div class="tube"></div>
+                </div>
+                <div class="gun_top">
+                    <div class="tube"></div>
+                </div>
+                <div class="square_two"></div>
+                <div class="square_four"></div>
+                <div class="square_three"></div>
+                <div class="square_one"></div>
+                <div class="on_on_base"></div>
+                <div class="on_base"></div>
+                <div class="base"></div>
+            </div>
+            <div class="bridge"></div>
+            <div class="chimney"></div>
+            <div class="ship-vawe"></div>
             </div>
             `
         }
@@ -240,7 +241,9 @@ const checkCollision = () => {
         explosion.layer = ship.layer;
         layers[explosion.layer].explosion = true;
         explosion.x = ship.x + 100;
+        
         renderExplosion()
+        
         setTimeout(() => {
             resetShip();
         }, 2300);

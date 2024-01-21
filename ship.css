@@ -8,7 +8,6 @@
 }
 .ship .hull {
   position: relative;
-  z-index: 13;
 }
 .ship .hull .gun {
   top: 96.1538461538px;
@@ -61,7 +60,6 @@
   position: absolute;
   top: 93.4579439252px;
   left: 120.7729468599px;
-  z-index: 11;
   background-image: linear-gradient(72deg, transparent 10%, #888 11%, #888 98%, transparent 98%), linear-gradient(-72deg, transparent 40%, #888 40%, #888 98%, transparent 98%);
 }
 .ship .hull .on_base {
@@ -70,7 +68,6 @@
   position: absolute;
   top: 79.3650793651px;
   left: 250px;
-  z-index: 10;
   background-image: linear-gradient(52deg, transparent 10%, #555 41%, #555 93%, transparent 93%), linear-gradient(-52deg, transparent 40%, #555 40%, #555 93%, transparent 93%);
 }
 .ship .hull .on_on_base {
@@ -79,7 +76,6 @@
   position: absolute;
   top: 70.0280112045px;
   left: 270.2702702703px;
-  z-index: 9;
   background-image: linear-gradient(72deg, #888 0%, #888 93%, transparent 93%);
 }
 .ship .hull .square_one {
@@ -88,7 +84,6 @@
   position: absolute;
   top: 41.6666666667px;
   left: 276.2430939227px;
-  z-index: 8;
   background-color: #555;
 }
 .ship .hull .square_two {
@@ -97,7 +92,6 @@
   position: absolute;
   top: 4.1666666667px;
   left: 294.1176470588px;
-  z-index: 8;
   background-color: #888;
 }
 .ship .hull .square_three {
@@ -106,7 +100,6 @@
   position: absolute;
   top: 37.5939849624px;
   left: 316.4556962025px;
-  z-index: 8;
   background-color: #555;
 }
 .ship .hull .square_four {
@@ -115,7 +108,6 @@
   position: absolute;
   top: 0;
   left: 282.4858757062px;
-  z-index: 8;
   background-color: #555;
 }
 .ship .bridge {
@@ -125,13 +117,32 @@
   bottom: 16.6666666667px;
   background-image: linear-gradient(-111deg, #555 97.8%, transparent 97.8%);
   transform: rotate(0.5deg);
-  z-index: 14;
 }
 .ship .chimney {
   position: absolute;
   height: 20.8333333333px;
   width: 500px;
   bottom: 0;
-  z-index: 15;
   background-image: linear-gradient(-105deg, brown 96.8%, transparent 96.8%);
+}
+.ship .ship-vawe {
+  position: absolute;
+  height: 20px;
+  width: 500px;
+  bottom: 0;
+  background-image: radial-gradient(circle, transparent 70%, #00738d 71%);
+  background-size: 60px 60px;
+  animation: ship_wave 3s infinite;
+}
+
+@keyframes ship_wave {
+  0% {
+    background-position-y: 92.5925925926px;
+  }
+  50% {
+    background-position-y: 80.6451612903px;
+  }
+  100% {
+    background-position-y: 92.5925925926px;
+  }
 }/*# sourceMappingURL=ship.css.map */

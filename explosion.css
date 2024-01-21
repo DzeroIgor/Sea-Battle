@@ -2,8 +2,8 @@
   width: 300px;
   height: 300px;
   position: absolute;
-  bottom: 20%;
-  z-index: 15;
+  bottom: 10%;
+  z-index: 50;
   display: grid;
   grid: 1fr 1fr 1fr/1fr 1fr 1fr;
 }
@@ -36,4 +36,65 @@
   background-repeat: no-repeat;
   animation: fire-lg 4s linear;
   animation-fill-mode: forwards;
+}
+
+@keyframes fire-sm {
+  from {
+    background-image: radial-gradient(rgba(255, 255, 116, 0.2431372549), transparent 70%);
+    opacity: 0;
+    background-size: 0 0;
+    background-position-y: 100px;
+  }
+  50% {
+    background-image: radial-gradient(#ffff4c, transparent 70%);
+    opacity: 1;
+    background-size: 100px 100px;
+    background-position-y: 0px;
+  }
+  to {
+    background-image: radial-gradient(rgba(255, 255, 116, 0.2431372549), transparent 70%);
+    opacity: 0;
+    background-size: 0 0;
+    background-position-y: 100px;
+  }
+}
+@keyframes fire-md {
+  from {
+    background-image: radial-gradient(rgba(255, 185, 45, 0.4941176471), transparent 70%);
+    opacity: 0;
+    background-size: 0 0;
+    background-position-y: 200px;
+  }
+  50% {
+    background-image: radial-gradient(#ffb92d, transparent 70%);
+    opacity: 1;
+    background-size: 200px 200px;
+    background-position-y: 0px;
+  }
+  to {
+    background-image: radial-gradient(rgba(255, 185, 45, 0.4941176471), transparent 70%);
+    opacity: 0;
+    background-size: 0 0;
+    background-position-y: 200px;
+  }
+}
+@keyframes fire-lg {
+  from {
+    background-image: radial-gradient(rgba(255, 185, 45, 0.4941176471), transparent 70%);
+    opacity: 0;
+    background-size: 0 0;
+    background-position-y: 300px;
+  }
+  50% {
+    background-image: radial-gradient(#ff5100, transparent 70%);
+    opacity: 1;
+    background-size: 250px 300px;
+    background-position-y: 0px;
+  }
+  to {
+    background-image: radial-gradient(rgba(255, 185, 45, 0.4941176471), transparent 70%);
+    opacity: 0;
+    background-size: 0 0;
+    background-position-y: 300px;
+  }
 }/*# sourceMappingURL=explosion.css.map */

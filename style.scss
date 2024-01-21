@@ -22,66 +22,82 @@ body {
     overflow: hidden;
     background-color: #333;
     height: 60vh;
+    background-image: linear-gradient(#ffdd00, #e29600 35%);
 
     .sea {
-        // cursor: none;
         position: absolute;
         height: 100%; 
-        perspective: 800px;
-        background-image: linear-gradient( $waveColor, #023946 35%);
+        perspective: 800px;        
         perspective-origin: center top;
-        // inset: 0;
         left: -60%;
         right: -60%;
                         
-            .wave {
-                @for $i from 0 to 10 {
-                        &:nth-child(#{$i+1}) {
-                            z-index: 20 - $i;
-                            transform: translateZ(-95px * $i);
-                            filter: brightness(100% -$i *5) blur($i * .5px);
-                        }
-                    }
+        .wave {
+            height: 120px;
+            width: 100%;
+            background-image: linear-gradient(transparent 50%, $waveColor 50%, $waveColor 50%);
+            position: absolute;
+            bottom: 0%;
 
-                // border: 1px solid red;
-                height: 120px;
-                width: 100%;
-                background-image: linear-gradient(transparent 50%, $waveColor 50%, $waveColor 50%);
-                position: absolute;
-                bottom: 0%;
-                z-index: 12;
-        
-                @for $i from 0 to 10 {
-                    &:nth-child(#{$i+1}) {
-                        animation: wave 5s + $i * 1s infinite;
-                        animation-delay: random() * 1s;
-                    }
+            @for $i from 0 to 10 {
+                &:nth-child(#{$i+1}) {
+                    filter: brightness(100% -$i *5) blur($i * .5px);
+                    z-index: 20 - $i;
+                    transform: translateZ(-95px * $i);
+                    animation: wave 5s + $i * 1s infinite;
+                    animation-delay: random() * 1s;
                 }
-        
-                &::before {
-                    content: "";
-                    display: block;
-                    // border: 1px solid yellow;
-                    transform: translateY(-0px);
-                    height: 25px;
-                    background-image: radial-gradient($waveColor 29%, transparent 30%);
-                    background-position: 80px 78px;
-                    background-size: 160px 100px;
-                }
-        
-                &::after {
-                    content: "";
-                    display: block;
-                    // border: 1px solid green;
-                    transform: translateY(0px);
-                    height: 51px;
-                    background-image: radial-gradient(transparent 40%, $waveColor 42%);
-                    background-position: 0 -52px;
-                    background-size: 160px 100px;
-                }
+            }    
+    
+            &::before {
+                content: "";
+                display: block;
+                transform: translateY(-0px);
+                height: 25px;
+                background-image: radial-gradient($waveColor 29%, transparent 30%);
+                background-position: 80px 78px;
+                background-size: 160px 100px;
+            }
+    
+            &::after {
+                content: "";
+                display: block;
+                transform: translateY(0px);
+                height: 51px;
+                background-image: radial-gradient(transparent 40%, $waveColor 42%);
+                background-position: 0 -52px;
+                background-size: 160px 100px;
             }
         }
-        
+    }
+      
+    .explosion-render {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        perspective: 800px;
+        perspective-origin: center top;
+        cursor: none;
+        z-index: 25; 
+
+        .layer-explosion {
+            @for $i from 0 to 10 {
+                &:nth-child(#{$i+1}) {
+                    // border: 1px solid red;
+                    z-index: 25 - $i;
+                    transform: translateZ(-95px * $i);
+                    filter: brightness(100% - $i * 5) blur($i * .5px);
+                }
+            }
+
+            position: absolute;
+            height: 100%;
+            inset: 0;
+            left: -60%;
+            right: -60%;
+        }
+    }
+
     .render {
         position: absolute;
         height: 100%;
@@ -89,15 +105,13 @@ body {
         perspective: 800px;
         perspective-origin: center top;
         cursor: none;
-    
-    
+        
         .layer {
             @for $i from 0 to 10 {
                 &:nth-child(#{$i+1}) {
-                    z-index: 10 - $i;
+                    z-index: 19 - $i;
                     transform: translateZ(-95px * $i);
-                    filter: brightness(100% -$i *5)
-                            blur($i * .5px);
+                    filter: brightness(100% - $i * 5) blur($i * .5px);
                 }
             }
             position: absolute;
@@ -107,7 +121,7 @@ body {
             right: -60%;
             // border: 1px solid gold;
         }
-
+                
         .scope {
             width: 200px;
             height: 200px;
@@ -117,7 +131,7 @@ body {
             font-size: 40px;
             position: absolute;
             overflow: hidden;
-            z-index: 50;
+            z-index: 100;
             align-self: unset;
             bottom: 0;
 
@@ -161,66 +175,6 @@ body {
     font-size: 2em;
 }
 
-@keyframes fire-sm {
-    from {
-        background-image: radial-gradient(#ffff743e, transparent 70%);
-        opacity: 0;
-        background-size: 0 0;
-        background-position-y: 100px;
-    }
-    50% {
-        background-image: radial-gradient(#ffff4c, transparent 70%);
-        opacity: 1;
-        background-size: 100px 100px;
-        background-position-y: 0px;
-    }
-    to {
-        background-image: radial-gradient(#ffff743e, transparent 70%);
-            opacity: 0;
-            background-size: 0 0;
-            background-position-y: 100px;
-    }
-}
-@keyframes fire-md {
-    from {
-        background-image: radial-gradient(#ffb92d7e, transparent 70%);
-        opacity: 0;
-        background-size: 0 0;
-        background-position-y: 200px;
-    }
-    50% {
-        background-image: radial-gradient(#ffb92d, transparent 70%);
-        opacity: 1;
-        background-size: 200px 200px;
-        background-position-y: 0px;
-    }
-    to {
-        background-image: radial-gradient(#ffb92d7e, transparent 70%);
-            opacity: 0;
-            background-size: 0 0;
-            background-position-y: 200px;
-    }
-}
-@keyframes fire-lg {
-    from {
-        background-image: radial-gradient(#ffb92d7e, transparent 70%);
-        opacity: 0;
-        background-size: 0 0;
-        background-position-y: 300px;
-    }
-    50% {
-        background-image: radial-gradient(#ff5100, transparent 70%);
-        opacity: 1;
-        background-size: 250px 300px;
-        background-position-y: 0px;
-    }
-    to {
-        background-image: radial-gradient(#ffb92d7e, transparent 70%);
-            opacity: 0;
-            background-size: 0 0;
-            background-position-y: 300px;
-    }
-}
 @keyframes wave {
     0% {
         left: 0%;

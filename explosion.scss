@@ -15,7 +15,7 @@
 
         background-repeat: no-repeat;
         background-position: center;
-        animation: fire-sm 4s linear;
+        animation: fire-sm 3s cubic-bezier(0.785, 0.135, 0.15, 0.86);
         animation-fill-mode: forwards;
     }
 
@@ -28,7 +28,7 @@
         background-position: 0 75px;
         background-position: center;
         background-repeat: no-repeat;
-        animation: fire-md 4s linear;
+        animation: fire-md 3s cubic-bezier(0.785, 0.135, 0.15, 0.86);
         animation-fill-mode: forwards;
     }
 
@@ -40,7 +40,7 @@
         background-position: 0 75px;
         background-position: center;
         background-repeat: no-repeat;
-        animation: fire-lg 4s linear;
+        animation: fire-lg 3s cubic-bezier(0.785, 0.135, 0.15, 0.86);
         animation-fill-mode: forwards;
     }
 }

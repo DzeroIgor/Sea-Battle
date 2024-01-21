@@ -240,15 +240,16 @@ const checkCollision = () => {
         explosion.layer = ship.layer;
         layers[explosion.layer].explosion = true;
         explosion.x = ship.x + 100;
+        renderExplosion()
+        setTimeout(() => {
+            resetShip();
+        }, 2300);
         
         clearInterval(timerRochet)
         rocket.shoot = false
         layers[rocket.layer].rochet = false
-        renderExplosion()
 
-        setTimeout(() => {
-            resetShip();
-        }, 3000);
+
         score += 10;
         scoreRender();
         

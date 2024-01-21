@@ -296,7 +296,7 @@ const resetShip = () => {
             resetShip();
         }
         render();
-    }, 1);
+    }, 10000);
 }
 
 renderWave()

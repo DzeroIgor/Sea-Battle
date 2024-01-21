@@ -241,7 +241,6 @@ const checkCollision = () => {
         layers[explosion.layer].explosion = true;
         explosion.x = ship.x + 100;
         
-        // console.log(ship.x + " " + rocket.x)
         clearInterval(timerRochet)
         rocket.shoot = false
         layers[rocket.layer].rochet = false
